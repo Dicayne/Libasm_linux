@@ -20,16 +20,20 @@ check_end:
 			mov rax, 0				;else if both = \0 return 0
 			ret
 compare:
-			mov al, BYTE[rsi + rcx]	;stock rsi[rax] in al
-			mov ah, BYTE[rdi + rcx]	;stock rdi[rax] in ah
-			cmp ah, al				;compare ah and al
+			mov ah, BYTE[rsi + rcx]	;stock rsi[rax] in al
+			mov al, BYTE[rdi + rcx]	;stock rdi[rax] in ah
+			cmp al, ah				;compare ah and al
 			ja diff_above			;if diff is above jump to diff_above layer
 			jb diff_bellow			;if diff is bellow jump to diff_bellow layer
 			je check_end			;else increment and jump to check_end layer
 diff_above:
-			mov rax, 1				;return 1
+			sub al, ah
+			mov ah, 0			;return 1
 			ret
 diff_bellow:
-			mov rax, -1				;return -1
+			sub al, ah
+			mov bl, al
+			mov rax, 0xffffffff
+			mov al, bl				;return -1
 			ret
 

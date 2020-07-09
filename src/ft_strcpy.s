@@ -14,5 +14,6 @@ cpy:
 compare:
 			cmp BYTE[rsi + rcx], 0	;check if rsi[rcx] != 0 -> jump to cpy layer
 			jnz cpy
+			mov BYTE[rdi + rcx], 0
 			mov rax, rdi			;stock rdi in rax
 			ret						;return rax
