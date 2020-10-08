@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: vmoreau <vmoreau@student.42.fr>            +#+  +:+       +#+         #
+#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/04/20 13:11:26 by vmoreau           #+#    #+#              #
-#    Updated: 2020/07/05 00:10:24 by vmoreau          ###   ########.fr        #
+#    Updated: 2020/10/08 16:01:39 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,8 @@ WHITE = \033[0;37m
 
 ###################################SOURCES#####################################
 
-SRC +=	src/ft_strlen.s		src/ft_write.s		src/ft_read.s	\
-		src/ft_strcpy.s		src/ft_strcmp.s		src/ft_strdup.s	\
+SRC +=	srcs/ft_strlen.s		srcs/ft_write.s		srcs/ft_read.s	\
+		srcs/ft_strcpy.s		srcs/ft_strcmp.s		srcs/ft_strdup.s	\
 
 #####################################BASIC#####################################
 
@@ -44,9 +44,6 @@ all: $(NAME)
 $(NAME): echoCL $(OBJ) echoOK echoAR
 	ar rcs $@ $(OBJ)
 	printf "$(GREEN)Compilation Success $(RED)$(NC)\n"
-
-test: $(NAME)
-	gcc -o $(EXE) src/main.c $^
 
 %.o: %.s
 	nasm -f elf64 $^

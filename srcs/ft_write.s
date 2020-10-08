@@ -17,5 +17,6 @@ ft_write:
 			mov [rbx], rax
 			mov rax, -1
 return:
+			pop rbp
 			leave
 			ret
